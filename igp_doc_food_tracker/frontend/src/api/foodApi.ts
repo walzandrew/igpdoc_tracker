@@ -5,7 +5,6 @@ const API_BASE_URL = "http://127.0.0.1:8000/api";
 export async function fetchFoods(filters: FoodFilters): Promise<Food[]> {
   const params = new URLSearchParams();
 
-  params.append("page", String(filters.page));
   if (filters.search) params.append("search", filters.search);
   if (filters.category) params.append("category", filters.category);
   if (filters.region) params.append("region", filters.region);
