@@ -19,6 +19,7 @@ export default function FoodHeader({ food }: FoodHeaderProps) {
         />
 
         <Badge text={food.food_type} variant="type" />
+        <Badge text={food.food_type_eng} variant="type" />
       </div>
     </div>
   );
