@@ -1,0 +1,75 @@
+{% extends "gis/admin/openlayers.html" %}
+
+{% block map_options %}
+{{ block.super }}
+{% endblock %}
+
+{% block extrahead %}
+{{ block.super }}
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+    /**
+     * Wait until OpenLayers and initMap are defined, then patch the map.
+     * This handles async loading in Django 4.x–5.x admin.
+     */
+    function whenAvailable(name, callback) {
+        const interval = setInterval(function() {
+            if (window[name]) {
+                clearInterval(interval);
+                callback(window[name]);
+            }
+        }, 50);
+    }
+
+    whenAvailable("initMap", function(originalInitMap) {
+        // Replace the default initMap function
+        window.initMap = function() {
+            const map = originalInitMap.apply(this, arguments);
+
+            // --- Replace default OpenStreetMap base layer with CartoDB Positron ---
+            const newBase = new ol.layer.Tile({
+                source: new ol.source.XYZ({
+                    url: "https://cartodb-basemaps-{a-c}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                    attributions: "© <a href='https://carto.com/attributions'>CARTO</a>",
+                }),
+            });
+
+            // Replace the first (default) base layer
+            const layers = map.getLayers();
+            if (layers && layers.getLength() > 0) {
+                layers.setAt(0, newBase);
+            } else {
+                map.addLayer(newBase);
+            }
+
+            // --- Style the vector (polygon) layer ---
+            layers.forEach(function(layer) {
+                const src = layer.getSource && layer.getSource();
+                if (src && src instanceof ol.source.Vector) {
+                    layer.setStyle(
+                        new ol.style.Style({
+                            stroke: new ol.style.Stroke({
+                                color: "rgba(34, 102, 102, 0.9)", // teal outline
+                                width: 2,
+                            }),
+                            fill: new ol.style.Fill({
+                                color: "rgba(102, 204, 204, 0.3)", // soft teal fill
+                            }),
+                        })
+                    );
+                }
+            });
+
+            // --- Optional: Hide raw WKT input if displayed ---
+            const rawInput = document.querySelector("textarea[name$='_raw']");
+            if (rawInput) {
+                rawInput.closest("div").style.display = "none";
+            }
+
+            console.log("✅ Custom map template loaded successfully.");
+            return map;
+        };
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,21 @@
+.food-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .food-item {
+    border-bottom: 1px solid #ddd;
+    padding: 0.5rem 0;
+  }
+  
+  .food-link {
+    color: #2c3e50;
+    text-decoration: none;
+  }
+  
+  .food-link:hover {
+    color: #0077cc;
+    text-decoration: underline;
+  }
+  
