@@ -1,17 +1,19 @@
-export const FOOD_TYPE_COLOR_MAP: Record<string, string> = {
+import type { EnglishFoodType } from "../types";
+
+export const FOOD_TYPE_COLOR_MAP: Record<EnglishFoodType, string> = {
   "Other Plant Products": "var(--color-plant-products)",
   "Other Animal Products": "var(--color-animal-products)",
   "Fresh Meats": "var(--color-fresh-meats)",
-  "Chocolate Products": "var(--color-chocolate)",
+  "Chocolate Products": "var(--color-chocolate-products)",
   Cheeses: "var(--color-cheeses)",
   "Oils and Fats": "var(--color-oils-fats)",
   "Essential Oils": "var(--color-essential-oils)",
   "Fruits, Vegetables and Grains": "var(--color-fruits-veg-grains)",
-  "Pasta Products": "var(--color-fruits-veg-grains)",
+  "Pasta Products": "var(--color-pasta-products)",
   "Fresh Seafood (Fish, Shellfish, Mollusks)": "var(--color-fresh-seafood)",
   "Prepared Meals": "var(--color-prepared-meals)",
   "Meat Products": "var(--color-meat-products)",
-  "Bread and Pastry Products": "var(--color-bread-pastry-1)",
+  "Bread and Pastry Products": "var(--color-bread-pastry)",
   Salt: "var(--color-salt)",
   "Aromatized Wines": "var(--color-aromatized-wines)",
 };

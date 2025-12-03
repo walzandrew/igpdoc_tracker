@@ -27,3 +27,20 @@ export type FoodFilters = {
 };
 
 export type FoodListResponse = Food[];
+
+export type EnglishFoodType =
+  | "Other Plant Products"
+  | "Other Animal Products"
+  | "Fresh Meats"
+  | "Chocolate Products"
+  | "Cheeses"
+  | "Oils and Fats"
+  | "Essential Oils"
+  | "Fruits, Vegetables and Grains"
+  | "Pasta Products"
+  | "Fresh Seafood (Fish, Shellfish, Mollusks)"
+  | "Prepared Meals"
+  | "Meat Products"
+  | "Bread and Pastry Products"
+  | "Salt"
+  | "Aromatized Wines";

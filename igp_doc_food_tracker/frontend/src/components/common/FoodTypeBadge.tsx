@@ -1,14 +1,13 @@
-import { FOOD_TYPE_COLOR_MAP } from "../../constants/foodTypeColors";
+import { getFoodTypeColor } from "../../utils/getFoodTypeColor";
+import type { EnglishFoodType } from "../../types";
 
 type FoodTypeBadgeProps = {
   itType: string; // original Italian food_type
-  engType: string; // english translation eng_food_type
+  engType: EnglishFoodType; // english translation eng_food_type
 };
 
 export default function FoodTypeBadge({ itType, engType }: FoodTypeBadgeProps) {
-  const key = engType;
-
-  const bgColor = FOOD_TYPE_COLOR_MAP[key] ?? "var(--color-other)"; // fallback gray
+  const bgColor = getFoodTypeColor(engType);
 
   return (
     <span
