@@ -1,5 +1,6 @@
-import Badge from "../common/Badge";
+import FoodCategoryBadge from "../common/FoodCategoryBadge";
 import type { Food } from "../../types";
+import FoodTypeBadge from "../common/FoodTypeBadge";
 
 type FoodHeaderProps = {
   food: Food;
@@ -13,13 +14,14 @@ export default function FoodHeader({ food }: FoodHeaderProps) {
 
       {/* Badges Row */}
       <div className="food-header-badges">
-        <Badge
+        <FoodCategoryBadge
           text={food.category}
           variant={food.category as "dop" | "igp" | "stg"}
         />
-
-        <Badge text={food.food_type} variant="type" />
-        <Badge text={food.food_type_eng} variant="type" />
+        <FoodTypeBadge
+          itType={food.food_type}
+          engType={food.food_type_eng}
+        ></FoodTypeBadge>
       </div>
     </div>
   );

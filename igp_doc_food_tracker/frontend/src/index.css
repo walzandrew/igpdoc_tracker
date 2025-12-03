@@ -7,6 +7,8 @@
 
 /* Reset & Base Layout
    ------------------------------------------------------------ */
+@import "./styles/foodColors.css";
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -462,11 +464,65 @@ footer {
   background-color: #5cb85c;
 }
 
-/* Type badge (outlined) */
-.badge-type {
-  background-color: transparent;
-  border: 1px solid #888;
-  color: #444;
+.food-type-badge {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: default;
+  margin-right: 0.5rem;
+
+  /* Remove transform to allow tooltip to display */
+  transition: opacity 0.15s ease-in-out;
+}
+
+.food-type-badge:hover {
+  opacity: 0.85; /* subtle effect, tooltip-friendly */
+}
+
+.food-header {
+  margin-bottom: 1rem;
+}
+
+.category-pill {
+  background: #444;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: white;
+  margin-right: 0.5rem;
+  font-weight: 600;
+}
+
+.tooltip {
+  position: relative;
+}
+
+/* Tooltip bubble */
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 125%;
+  left: 100%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease-in-out;
+  z-index: 9999;
+}
+
+/* Show tooltip on hover */
+.tooltip:hover::after,
+.tooltip:hover::before {
+  opacity: 1;
 }
 
 /* Food Header component

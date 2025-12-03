@@ -1,0 +1,31 @@
+:root {
+    /* Plant & Produce */
+    --color-plant-products: #2ecc71;            /* bright green */
+    --color-fruits-veg-grains: #27ae60;         /* deep green */
+    --color-essential-oils: #16a085;            /* teal green */
+  
+    /* Animal Products */
+    --color-animal-products: #f39c12;           /* amber */
+    --color-fresh-meats: #c0392b;               /* meat red */
+    --color-meat-products: #922b21;             /* darker red */
+  
+    /* Dairy, Oils, Fats */
+    --color-cheeses: #f1c40f;                   /* cheese yellow */
+    --color-oils-fats: #d4ac0d;                 /* olive oil gold */
+  
+    /* Sweets & Baked */
+    --color-chocolate: #6e2c00;                 /* dark chocolate brown */
+    --color-bread-pastry-1: #a04000;            /* baked brown */
+    --color-bread-pastry-2: #873600;            /* alternative pastry color */
+  
+    /* Seafood */
+    --color-fresh-seafood: #2980b9;             /* blue ocean */
+  
+    /* Prepared Foods */
+    --color-prepared-meals: #8e44ad;            /* purple */
+  
+    /* Miscellaneous */
+    --color-salt: #95a5a6;                      /* gray mineral */
+    --color-aromatized-wines: #8e0038;          /* wine red */
+    --color-other: #7f8c8d;                     /* neutral fallback */
+  }
