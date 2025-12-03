@@ -1,4 +1,4 @@
-import L, { LatLng } from "leaflet";
+import L from "leaflet";
 
 export const ITALY_BOUNDS: L.LatLngBoundsExpression = [
   [36.0, 6.0], // Southwest corner (Sicily/Sardinia)

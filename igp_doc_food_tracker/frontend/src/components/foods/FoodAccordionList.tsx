@@ -14,7 +14,7 @@ export default function FoodAccordionList({ mapFlag }: Props) {
   // Obtain most current foods from cache
   const { filters } = useFoodFilters();
   const { data } = useFoods(filters);
-  const foods = data;
+  const foods = data || [];
 
   // Filter foods to active region if there is one
   const { activeRegion, activeProvince } = useMapSelection();

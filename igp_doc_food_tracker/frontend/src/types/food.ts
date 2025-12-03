@@ -15,7 +15,7 @@ export type Food = {
     type: string;
     coordinates: [number, number];
   } | null;
-  food_type_eng: string;
+  food_type_eng: EnglishFoodType;
 };
 
 export type FoodFilters = {

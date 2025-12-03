@@ -4,7 +4,6 @@ import { Suspense, lazy } from "react";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Loader from "./components/common/Loader";
-import FoodDetailPage from "./pages/FoodDetailPage";
 
 // Lazy-loaded pages
 const HomePage = lazy(() => import("./pages/HomePage"));
