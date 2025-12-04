@@ -37,7 +37,12 @@ export default function FoodListFilters({
         onKeyDown={(e) => {
           if (e.key === "Enter") triggerSearch();
         }}
-        style={{ padding: "0.6rem", marginRight: "0.5rem" }}
+        style={{
+          padding: "0.6rem",
+          marginRight: "0.5rem",
+          border: "1px solid #ccc",
+          borderRadius: "6px",
+        }}
       />
 
       {/* Search Button */}

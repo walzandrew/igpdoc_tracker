@@ -12,6 +12,7 @@ export default function FoodSearchBar({ onSearch, initialValue = "" }: Props) {
     <div style={{ marginBottom: "1rem" }}>
       <input
         type="text"
+        style={{ border: "1px solid #ccc", borderRadius: "6px" }}
         placeholder="Search for a food..."
         value={value}
         onChange={(e) => setValue(e.target.value)}
