@@ -9,7 +9,6 @@ import Loader from "./components/common/Loader";
 const HomePage = lazy(() => import("./pages/HomePage"));
 const FoodListPage = lazy(() => import("./pages/FoodListPage"));
 const FoodMapPage = lazy(() => import("./pages/FoodMapPage"));
-const AboutPage = lazy(() => import("./pages/AboutPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 export default function App() {
@@ -40,17 +39,9 @@ function ModalSwitch() {
           <Route path="/" element={<HomePage />} />
           <Route path="/foods" element={<FoodListPage />} />
           <Route path="/map" element={<FoodMapPage />} />
-          <Route path="/about" element={<AboutPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
     </main>
   );
 }
-
-/* Modal routes (sit on top)
-        {background && (
-          <Routes>
-            <Route path="/foods/:id" element={<FoodDetailPage modal />} />
-          </Routes>
-        )} */
