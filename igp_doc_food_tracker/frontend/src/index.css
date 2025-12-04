@@ -601,3 +601,52 @@ footer {
   overflow-y: scroll;
 }
 
+/* MOBILE MODE */
+@media (max-width: 768px) {
+  .map-sidebar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 45vh;
+
+    border-left: none;
+    border-top: 2px solid #ddd;
+    border-radius: 12px 12px 0 0;
+
+    /* Start hidden by sliding down */
+    transform: translateY(calc(100% - var(--sidebar-tab-width)));
+
+    /* Override desktop padding */
+    padding-top: 2.5rem;
+  }
+
+  .map-sidebar.open {
+    transform: translateY(0);
+  }
+
+  /* Tab for mobile mode — sits at the top of the panel */
+  .map-sidebar-tab {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -100%);
+
+    width: 60px;
+    height: 28px;
+
+    text-align: center;
+    line-height: 28px;
+
+    border-radius: 4px 4px 0 0;
+    border: 1px solid #ccc;
+
+    background: #f4f4f4;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+}
+
+
