@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 
-// import "./mapSidebar.css";
 import { useFoods } from "../../queries/useFoods";
 import FoodAccordionList from "../foods/FoodAccordionList";
 import { useMapSelection } from "../../context/MapSelectionContext";
