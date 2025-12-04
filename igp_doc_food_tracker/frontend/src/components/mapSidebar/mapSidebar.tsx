@@ -1,12 +1,17 @@
 import { useEffect, useRef } from "react";
 
-import "./mapSidebar.css";
+// import "./mapSidebar.css";
 import { useFoods } from "../../queries/useFoods";
 import FoodAccordionList from "../foods/FoodAccordionList";
 import { useMapSelection } from "../../context/MapSelectionContext";
 import { useFoodFilters } from "../../context/FoodFiltersContext";
 
-export default function MapSidebar() {
+type Props = {
+  open: boolean;
+  toggleOpenClose: () => void;
+};
+
+export default function MapSidebar({ open, toggleOpenClose }: Props) {
   const { filters } = useFoodFilters();
   const { isLoading, error } = useFoods(filters);
   const { activeRegionName, activeProvinceName } = useMapSelection();
@@ -22,14 +27,21 @@ export default function MapSidebar() {
 
   // Unpack foods from data
   return (
-    <div className={`sidebar-container`}>
+    <div className={`map-sidebar ${open ? "open" : "closed"}`}>
+      <button className="map-sidebar-tab" onClick={toggleOpenClose}>
+        {open ? ">" : "<"}
+      </button>
       <div className="sidebar-header">
         <h2>Foods in: {activeProvinceName ?? activeRegionName}</h2>
       </div>
       <div className="sidebar-content">
         {isLoading && <p>Loading...</p>}
         {error && <p>Error: {error.message}</p>}
-        {!isLoading && !error && <FoodAccordionList mapFlag={true} />}
+        {!isLoading && !error && (
+          <div style={{ overflowY: "scroll" }}>
+            <FoodAccordionList mapFlag={true} />
+          </div>
+        )}
       </div>
     </div>
   );

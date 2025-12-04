@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, useMap } from "react-leaflet";
 
 import MapToolbar from "../mapToolbar/MapToolbar";
@@ -24,6 +24,7 @@ type ZoomControllerProps = {
 
 export default function BaseMap({ regions, provinces }: Props) {
   const { setFilters } = useFoodFilters();
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   const {
     activeRegion,
@@ -46,13 +47,6 @@ export default function BaseMap({ regions, provinces }: Props) {
       if (activeRegion === "ITALY") {
         map.setView(startingCenter, startingZoom, { animate: true });
         setActiveRegionName("Italy");
-        // setFilters((prev) => ({
-        //   ...prev,
-        //   region: activeRegion,
-        //   province: null,
-        //   page: 1,
-        // }));
-        // return;
       } else {
         const region = regions.find((r) => r.id === activeRegion);
         if (!region) return;
@@ -83,14 +77,18 @@ export default function BaseMap({ regions, provinces }: Props) {
     }));
   };
 
+  function toggleOpen() {
+    setSidebarOpen(sidebarOpen ? false : true);
+  }
+
   return (
-    <div style={{ width: "100%" }}>
+    <div style={{ width: "100%", position: "relative" }}>
       <MapToolbar
         regions={regions}
         provinces={provinces}
         onResetView={returnToItalyZoom}
       />
-      <div className="map-container">
+      <div className="map-container" style={{ position: "relative" }}>
         <MapContainer
           center={startingCenter}
           zoom={startingZoom}
@@ -110,8 +108,8 @@ export default function BaseMap({ regions, provinces }: Props) {
           {regions && <RegionLayer regions={regions} />}
           {provinces && <ProvinceLayer provinces={provinces} />}
         </MapContainer>
-        <MapSidebar></MapSidebar>
       </div>
+      <MapSidebar open={sidebarOpen} toggleOpenClose={toggleOpen}></MapSidebar>
     </div>
   );
 }
