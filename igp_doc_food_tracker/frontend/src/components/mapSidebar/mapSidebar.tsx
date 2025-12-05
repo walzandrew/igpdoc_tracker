@@ -29,7 +29,7 @@ export default function MapSidebar({ open, toggleOpenClose }: Props) {
   return (
     <div className={`map-sidebar ${open ? "open" : "closed"}`}>
       <button className="map-sidebar-tab" onClick={toggleOpenClose}>
-        {isMobile ? (open ? "v" : "^") : open ? "<" : ">"}
+        {isMobile ? (open ? "v" : "^") : open ? ">" : "<"}
       </button>
       <div className="sidebar-header">
         <h2>Foods in: {activeProvinceName ?? activeRegionName}</h2>
