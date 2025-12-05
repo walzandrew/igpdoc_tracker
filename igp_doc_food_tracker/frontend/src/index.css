@@ -624,7 +624,7 @@ footer {
   }
 
   .map-sidebar.open {
-    transform: translateY(0);
+    transform: translateY(50%);
   }
 
   /* Tab for mobile mode — sits at the top of the panel */

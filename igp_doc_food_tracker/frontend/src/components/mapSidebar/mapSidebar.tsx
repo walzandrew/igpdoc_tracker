@@ -14,6 +14,7 @@ export default function MapSidebar({ open, toggleOpenClose }: Props) {
   const { filters } = useFoodFilters();
   const { isLoading, error } = useFoods(filters);
   const { activeRegionName, activeProvinceName } = useMapSelection();
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
   const listRef = useRef<HTMLDivElement | null>(null);
 
@@ -28,7 +29,7 @@ export default function MapSidebar({ open, toggleOpenClose }: Props) {
   return (
     <div className={`map-sidebar ${open ? "open" : "closed"}`}>
       <button className="map-sidebar-tab" onClick={toggleOpenClose}>
-        {open ? ">" : "<"}
+        {isMobile ? (open ? "v" : "^") : open ? "<" : ">"}
       </button>
       <div className="sidebar-header">
         <h2>Foods in: {activeProvinceName ?? activeRegionName}</h2>
