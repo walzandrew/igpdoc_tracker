@@ -9,6 +9,7 @@ import type { RegionFeature, ProvinceFeature } from "../../types";
 import { ITALY_BOUNDS, startingZoom, startingCenter } from "./mapConstants";
 import { useMapSelection } from "../../context/MapSelectionContext";
 import { useFoodFilters } from "../../context/FoodFiltersContext";
+import ResetViewControl from "../mapControls/resetViewControl";
 
 type Props = {
   regions: RegionFeature[] | null;
@@ -83,11 +84,7 @@ export default function BaseMap({ regions, provinces }: Props) {
 
   return (
     <div style={{ width: "100%", position: "relative" }}>
-      <MapToolbar
-        regions={regions}
-        provinces={provinces}
-        onResetView={returnToItalyZoom}
-      />
+      <MapToolbar regions={regions} provinces={provinces} />
       <div className="map-container" style={{ position: "relative" }}>
         <MapContainer
           center={startingCenter}
@@ -97,6 +94,7 @@ export default function BaseMap({ regions, provinces }: Props) {
           maxBounds={ITALY_BOUNDS}
           doubleClickZoom={false}
         >
+          <ResetViewControl onReset={returnToItalyZoom} />
           <RegionZoomController
             startingZoom={startingZoom}
             startingCenter={startingCenter}

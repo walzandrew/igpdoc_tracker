@@ -1,25 +1,14 @@
 import RegionSelector from "./RegionSelector";
 import ProvinceSelector from "./ProvinceSelector";
-import ResetViewButton from "./ResetViewButton";
 import type { RegionFeature, ProvinceFeature } from "../../types";
 import { useMapSelection } from "../../context/MapSelectionContext";
 
 type MapToolbarProps = {
   regions: RegionFeature[] | null;
   provinces: ProvinceFeature[] | null;
-  // selectedRegion: string | null;
-  // selectedProvince: string | null;
-  // activeRegionName: string | null;
-  // onRegionChange: (code: string | null) => void;
-  // onProvinceChange: (code: string | null) => void;
-  onResetView: () => void;
 };
 
-export default function MapToolbar({
-  regions,
-  provinces,
-  onResetView,
-}: MapToolbarProps) {
+export default function MapToolbar({ regions, provinces }: MapToolbarProps) {
   // need to reference the context to use its state
   const {
     activeRegion,
@@ -31,7 +20,6 @@ export default function MapToolbar({
 
   return (
     <div className="map-toolbar" style={toolbarStyle}>
-      <ResetViewButton onResetView={onResetView} />
       <RegionSelector
         regions={regions}
         selected={activeRegion}
