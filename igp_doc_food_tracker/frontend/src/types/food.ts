@@ -44,3 +44,22 @@ export type EnglishFoodType =
   | "Bread and Pastry Products"
   | "Salt"
   | "Aromatized Wines";
+
+export type ItalianFoodType =
+  | "Altri prodotti dell'allegato I del trattato"
+  | "Altri prodotti dell'allegato I del trattato (spezie, ecc.) e Prodotti di panetteria, pasticceria, confetteria o biscotteria"
+  | "Altri prodotti di origine animale"
+  | "Carni fresche (e frattaglie)"
+  | "Cioccolato e prodotti derivati"
+  | "Formaggi"
+  | "Oli e grassi"
+  | "Olio essenziale"
+  | "Ortofrutticoli e cereali"
+  | "Pasta alimentare"
+  | "Pesci, molluschi, crostacei freschi"
+  | "Piatti pronti"
+  | "Prodotti a base di carne"
+  | "Prodotti di panetteria, pasticceria"
+  | "Prodotti di panetteria, pasticceria, confetteria o biscotteria e Pasta alimentare"
+  | "Sale"
+  | "Vini aromatizzati";

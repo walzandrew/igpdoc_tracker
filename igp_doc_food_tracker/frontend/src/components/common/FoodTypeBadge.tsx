@@ -1,8 +1,8 @@
 import { getFoodTypeColor } from "../../utils/getFoodTypeColor";
-import type { EnglishFoodType } from "../../types";
+import type { EnglishFoodType, ItalianFoodType } from "../../types";
 
 type FoodTypeBadgeProps = {
-  itType: string; // original Italian food_type
+  itType: ItalianFoodType; // original Italian food_type
   engType: EnglishFoodType; // english translation eng_food_type
 };
 
