@@ -24,3 +24,7 @@ dev-dist
 *.sln
 *.sw?
 VS_Formattting_README.md
+.DS_Store
+
+# Local data
+*.geojson
