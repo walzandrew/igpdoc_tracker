@@ -18,7 +18,7 @@ class Command(BaseCommand):
         parser.add_argument(
             "--provinces",
             type=str,
-            help="Path to the provinces GeoJSON file (defaults to BASE_DIR/data/Province_IT_4326_Simp_100m.geojson)",
+            help="Path to the provinces GeoJSON file (defaults to BASE_DIR/data/Province_IT_4326.geojson)",
         )
         parser.add_argument(
             "--reset",
@@ -36,7 +36,7 @@ class Command(BaseCommand):
         base_data_dir = Path(settings.BASE_DIR) / "data"
 
         regions_path = Path(options["regions"]) if options["regions"] else base_data_dir / "Regioni_IT_4326.geojson"
-        provinces_path = Path(options["provinces"]) if options["provinces"] else base_data_dir / "Province_IT_4326_Simp_100m.geojson"
+        provinces_path = Path(options["provinces"]) if options["provinces"] else base_data_dir / "Province_IT_4326.geojson"
 
         # Log absolute paths
         self.stdout.write(self.style.HTTP_INFO("=== GeoJSON File Paths ==="))
