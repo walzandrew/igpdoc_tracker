@@ -18,7 +18,7 @@ class Command(BaseCommand):
         parser.add_argument(
             "--provinces",
             type=str,
-            help="Path to the provinces GeoJSON file (defaults to BASE_DIR/data/Province_IT_4326.geojson)",
+            help="Path to the provinces GeoJSON file (defaults to BASE_DIR/data/Province_IT_4326_Simp_100m.geojson)",
         )
         parser.add_argument(
             "--reset",
