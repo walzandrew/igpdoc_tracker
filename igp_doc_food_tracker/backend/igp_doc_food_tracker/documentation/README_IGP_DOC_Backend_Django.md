@@ -177,7 +177,44 @@ http://127.0.0.1:8000/api/
 | File | Description |
 |------|--------------|
 | `environment.yml` | Conda environment configuration |
-| `load_regions.py` | Imports regional GeoJSON data |
-| `load_provinces.py` | Imports provincial GeoJSON data |
+| `load_geodata.py` | Imports locally saved regions and provinces data into db
 | `load_foods.py` | Imports food data CSV and links to regions/provinces |
 | `Food_Tracker_Model_Summary.md` | Text-based ERD and API documentation |
+
+## Post-processing of geospatial layers 
+### Simplification of polygon complexity to decrease loading size
+Topology tools were used in PostGIS to simplify the geometries used by the web application
+as the layers from ISTAT were more detailed than necessary for the user. This is not the best
+implementation as it's an approximation in degrees (coords for WGS84) but I could not make it work
+with a projected coordinate system which would have been the preferred method. The commands for the
+simplification were as follows:
+
+```SQL
+WITH coverage AS (
+  SELECT
+    prov_istat_code,
+    prov_poly AS geom_3035
+  FROM "igp_doc_food_tracker_province"
+),
+simplified AS (
+  SELECT
+    prov_istat_code,
+    ST_CoverageSimplify(geom_3035, .01, true) OVER() AS geom_simplified_3035
+  FROM coverage
+)
+UPDATE "igp_doc_food_tracker_province" p
+SET geom_simplified = s.geom_simplified_3035
+FROM simplified s
+WHERE p.prov_istat_code = s.prov_istat_code;
+
+UPDATE "igp_doc_food_tracker_region" r
+SET geom_simplified = sub.geom
+FROM (
+  SELECT
+    parent_region_id,
+    ST_Union(geom_simplified) AS geom
+  FROM "igp_doc_food_tracker_province"
+  GROUP BY parent_region_id
+) sub
+WHERE r.reg_istat_code = sub.parent_region_id;
+```

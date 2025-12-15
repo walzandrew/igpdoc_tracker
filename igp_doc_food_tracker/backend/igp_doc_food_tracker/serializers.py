@@ -6,14 +6,14 @@ import django_filters
 class RegionSerializer(GeoFeatureModelSerializer):
     class Meta:
         model = Region
-        geo_field = "reg_poly"
+        geo_field = "geom_simplified"
         fields = ("reg_istat_code", "reg_name", "reg_acronym", "reg_centroid")
 
 
 class ProvinceSerializer(GeoFeatureModelSerializer):
     class Meta:
         model = Province
-        geo_field = "prov_poly"
+        geo_field = "geom_simplified"
         fields = (
             "prov_istat_code",
             "prov_name",

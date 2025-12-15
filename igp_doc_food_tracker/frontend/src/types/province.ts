@@ -11,7 +11,7 @@ export type Province = {
   prov_name: string;
   prov_acronym: string;
   parent_region: string; // foreign key reference to Region
-  prov_poly: Polygon | MultiPolygon;
+  geom_simplified: Polygon | MultiPolygon;
   prov_centroid: Point;
 };
 

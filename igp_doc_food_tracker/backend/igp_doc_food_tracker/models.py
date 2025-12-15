@@ -5,6 +5,12 @@ class Region(models.Model):
     reg_name = models.CharField(max_length=200)
     reg_acronym = models.CharField(max_length=2)
     reg_poly = models.MultiPolygonField(srid=4326, null=True, blank=True)
+    geom_simplified = models.MultiPolygonField(
+        srid=4326,
+        null=True,
+        blank=True,
+        editable=False
+    )
     reg_centroid = models.PointField(srid=4326, null=True, blank=True)
 
     def __str__(self):
@@ -17,6 +23,12 @@ class Province(models.Model):
     prov_acronym = models.CharField(max_length=2)
     parent_region = models.ForeignKey(Region, on_delete=models.CASCADE, related_name="province")
     prov_poly = models.MultiPolygonField(srid=4326, null=True, blank=True)
+    geom_simplified = models.MultiPolygonField(
+        srid=4326,
+        null=True,
+        blank=True,
+        editable=False
+    )
     prov_centroid = models.PointField(srid=4326, null=True, blank=True)
 
     def __str__(self):
